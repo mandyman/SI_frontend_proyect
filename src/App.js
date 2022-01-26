@@ -6,6 +6,14 @@ import {
 } from "react-router-dom";
 
 import Home from './components/home';
+
+
+import PersonasListado from "./components/persona/personasListado";
+import PersonasDetalle from "./components/persona/personasDetalle";
+
+import VehiculosListado from "./components/vehiculo/vehiculosListado"
+import VehiculosDetalle from "./components/vehiculo/vehiculosDetalle"
+
 import ClientesListado from "./components/clientes/clientesListado";
 import ClientesDetalle from "./components/clientes/clientesDetalle";
 
@@ -33,16 +41,38 @@ function App() {
       <BrowserRouter>
 
         <nav className="flex">
+        {/*
           <NavLink to="/" className="px-5 py-3 no-underline text-900 text-xl border-bottom-2 border-300 hover:border-500">Home</NavLink>
           <NavLink to="/clientes" className="px-5 py-3 no-underline text-700 text-xl border-bottom-2 border-300 hover:border-500">Clientes</NavLink>
           <NavLink to="/articulos" className="px-5 py-3 no-underline text-700 text-xl border-bottom-2 border-300 hover:border-500">Articulos</NavLink>
           <NavLink to="/familias" className="px-5 py-3 no-underline text-700 text-xl border-bottom-2 border-300 hover:border-500">Familias</NavLink>
           <NavLink to="/almacenes" className="px-5 py-3 no-underline text-700 text-xl border-bottom-2 border-300 hover:border-500">Almacenes</NavLink>
           <NavLink to="/pedidos" className="px-5 py-3 no-underline text-700 text-xl border-bottom-2 border-300 hover:border-500">Pedidos</NavLink>
+        */}
+
+        <NavLink to="/" className="px-5 py-3 no-underline text-900 text-xl border-bottom-2 border-300 hover:border-500">Home</NavLink>
+        <NavLink to="/persona" className="px-5 py-3 no-underline text-700 text-xl border-bottom-2 border-300 hover:border-500">Personas</NavLink>
+        <NavLink to="/vehiculo" className="px-5 py-3 no-underline text-700 text-xl border-bottom-2 border-300 hover:border-500">Vehículos</NavLink>
         </nav>
 
         <div className="p-5">
+        
           <Routes>
+
+          <Route path="/" element={<Home mensaje="Página principal" />} />
+            <Route path="persona" >
+              <Route index element={<PersonasListado />} />
+              <Route path="nuevo" element={<PersonasDetalle />} />
+              <Route path=":idPersona" element={<PersonasDetalle />} />
+            </Route>
+
+            <Route path="vehiculo" >
+              <Route index element={<VehiculosListado />} />
+              <Route path="nuevo" element={<VehiculosDetalle />} />
+              <Route path=":idVehiculo" element={<VehiculosDetalle />} />
+            </Route>
+
+          {/*
             <Route path="/" element={<Home mensaje="Página principal" />} />
             <Route path="clientes" >
               <Route index element={<ClientesListado />} />
@@ -71,7 +101,7 @@ function App() {
             <Route path="pedidos" >
               <Route index element={<Home mensaje="Vista de Pedidos <pendiente>" />} />
               <Route path=":id" element={<Home mensaje="Detalle de un pedido <pendiente>" />} />
-            </Route>
+            </Route>*/}
 
           </Routes>
         </div>
