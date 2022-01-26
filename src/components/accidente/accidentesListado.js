@@ -35,7 +35,6 @@ export default function AccidentesListado(props) {
     }
 
     function editarAccidente(accidente) {
-        //setPersonaActual(persona); // no necesario
         navigate(accidente.id.toString()); // navega a URL del Accidente
     }
 
@@ -116,7 +115,7 @@ export default function AccidentesListado(props) {
             <div className="text-3xl text-800 font-bold mb-4">Listado de accidentes</div>
 
             <div className="grid">
-                <InputText id="busqueda" className="col-6 mr-2" onChange={onBusquedaChange} />
+                <InputText id="busqueda" className="col-5 mr-2" onChange={onBusquedaChange} />
                 <Button label="Buscar por provincia" className="col-1 mr-2" onClick={buscarPorProvincia} />
                 <Button label="Buscar por codigoPostal" className="col-1 mr-2" onClick={buscarPorCodigoPostal} />
                 <Button label="Buscar por contenido de Descripcion" className="col-1 mr-2" onClick={buscarPorDescripcion} />

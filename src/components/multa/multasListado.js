@@ -35,8 +35,7 @@ export default function MultasListado(props) {
     }
 
     function editarMulta(multa) {
-        //setPersonaActual(persona); // no necesario
-        navigate(multa.id.toString()); // navega a URL del cliente
+        navigate(multa.id.toString()); // navega a URL del Multa
     }
 
     function confirmarBorradoMulta(multa) {
@@ -115,7 +114,7 @@ export default function MultasListado(props) {
             <div className="text-3xl text-800 font-bold mb-4">Listado de multas</div>
 
             <div className="grid">
-                <InputText id="busqueda" className="col-6 mr-2" onChange={onBusquedaChange} />
+                <InputText id="busqueda" className="col-5 mr-2" onChange={onBusquedaChange} />
                 <Button label="Buscar por tipo" className="col-1 mr-2" onClick={buscarPorTipo} />
                 <Button label="Buscar por sanción" className="col-1 mr-2" onClick={buscarPorSancion} />
                 <Button label="Buscar por accidente Id" className="col-1 mr-2" onClick={buscarPorAccidenteId} />

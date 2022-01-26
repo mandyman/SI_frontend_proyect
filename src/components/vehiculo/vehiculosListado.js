@@ -31,12 +31,11 @@ export default function VehiculosListado(props) {
 
 
     function nuevoVehiculo() {
-        navigate("nuevo"); // navega a URL para creacion de nuevo cliente
+        navigate("nuevo"); // navega a URL para creacion de nuevo Vehiculo
     }
 
     function editarVehiculo(vehiculo) {
-        //setPersonaActual(persona); // no necesario
-        navigate(vehiculo.id.toString()); // navega a URL del cliente
+        navigate(vehiculo.id.toString()); // navega a URL del Vehiculo
     }
 
     function confirmarBorradoVehiculo(vehiculo) {
@@ -115,7 +114,7 @@ export default function VehiculosListado(props) {
             <div className="text-3xl text-800 font-bold mb-4">Listado de vehiculos</div>
 
             <div className="grid">
-                <InputText id="busqueda" className="col-6 mr-2" onChange={onBusquedaChange} />
+                <InputText id="busqueda" className="col-5 mr-2" onChange={onBusquedaChange} />
                 <Button label="Buscar por modelo" className="col-1 mr-2" onClick={buscarPorModelo} />
                 <Button label="Buscar por matrícula" className="col-1 mr-2" onClick={buscarPorMatricula} />
                 <Button label="Buscar por conductor id" className="col-1 mr-2" onClick={buscarPorConductorId} />

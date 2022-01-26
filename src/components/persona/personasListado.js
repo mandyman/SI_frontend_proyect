@@ -6,7 +6,6 @@ import { InputText } from 'primereact/inputtext';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { Dialog } from 'primereact/dialog';
 
-
 import { useNavigate } from 'react-router-dom';
 
 import personasService from '../../services/personasService';
@@ -21,7 +20,6 @@ export default function PersonasListado(props) {
 
     let navigate = useNavigate();
 
-
     useEffect(() => {
         personasService.buscarTodos().then(res => {
             setPersonas(res.data);
@@ -32,12 +30,11 @@ export default function PersonasListado(props) {
 
 
     function nuevoPersona() {
-        navigate("nuevo"); // navega a URL para creacion de nuevo cliente
+        navigate("nuevo"); // navega a URL para creacion de nuevo Persona
     }
 
     function editarPersona(persona) {
-        //setPersonaActual(persona); // no necesario
-        navigate(persona.id.toString()); // navega a URL del cliente
+        navigate(persona.id.toString()); // navega a URL del Persona
     }
 
     function confirmarBorradoPersona(persona) {
@@ -133,7 +130,7 @@ export default function PersonasListado(props) {
             <div className="text-3xl text-800 font-bold mb-4">Listado de personas</div>
 
             <div className="grid">
-                <InputText id="busqueda" className="col-6 mr-2" onChange={onBusquedaChange} />
+                <InputText id="busqueda" className="col-5 mr-2" onChange={onBusquedaChange} />
                 <Button label="Buscar por dni" className="col-1 mr-2" onClick={buscarPorDNI} />
                 <Button label="Buscar por nombre" className="col-1 mr-2" onClick={buscarPorNombre} />
                 <Button label="Buscar por apellidos" className="col-1 mr-2" onClick={buscarPorApellidos} />

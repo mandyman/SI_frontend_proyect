@@ -91,8 +91,8 @@ export default function VehiculosDetalle(props) {
                         
                         <div className="p-field">
                             <label htmlFor="conductor">Conductor</label>
-                            <Dropdown value={vehiculo.conductor} options={personas} onChange={onConductorChange} optionLabel="nombre"
-                                filter showClear filterBy="nombre" placeholder={esNuevo ? "Seleccionar conductor" : vehiculo.conductor.nombre} />
+                            <Dropdown value={vehiculo.conductor} options={personas} onChange={onConductorChange} optionLabel="id"
+                                filter showClear filterBy="id" placeholder={esNuevo ? "Seleccionar conductor" : `${vehiculo.conductor.id}`} />
                         </div>
 
                     </div>

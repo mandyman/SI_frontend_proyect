@@ -39,14 +39,14 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
-//import './App.css';
+import './App.css';
 
 function App() {
   const refvalues = {severity: 'error', summary: 'Error', detail: 'Error, comprueba si este valor es referenciado'}
   const toastRef = useRef();
 
   const notificationStyle = {
-    zIndex: 9999
+    zIndex: 9999,
   }
 
   const showErrorNotification = () => {
