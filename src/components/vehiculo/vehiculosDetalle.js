@@ -11,7 +11,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import vehiculosService from '../../services/vehiculosService';
 import personasService from '../../services/personasService';
 
-export default function VehiculosDetalle() {
+export default function VehiculosDetalle(props) {
 
     const params = useParams();
     const navigate = useNavigate();
@@ -57,7 +57,9 @@ export default function VehiculosDetalle() {
             if (esNuevo) {
                 await vehiculosService.crear(vehiculo);
             } else {
-                await vehiculosService.modificar(vehiculo.id, vehiculo);
+                await vehiculosService.modificar(vehiculo.id, vehiculo).catch(error => {
+                    props.showError();
+                });
             }
             navigate("/vehiculo");
         }

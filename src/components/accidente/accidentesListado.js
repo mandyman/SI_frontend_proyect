@@ -45,7 +45,9 @@ export default function AccidentesListado(props) {
     }
 
     async function borrarAccidente() {
-        await accidentesService.eliminar(accidenteActual.id);
+        await accidentesService.eliminar(accidenteActual.id).catch(error => {
+            props.showError();
+        });
         ocultarDialogoBorrado();
     }
 

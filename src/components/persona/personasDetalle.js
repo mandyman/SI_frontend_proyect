@@ -9,7 +9,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import personasService from '../../services/personasService';
 
-export default function PersonasDetalle() {
+export default function PersonasDetalle(props) {
 
     const params = useParams();
     const navigate = useNavigate();
@@ -62,7 +62,9 @@ export default function PersonasDetalle() {
             if (esNuevo) {
                 await personasService.crear(persona);
             } else {
-                await personasService.modificar(persona.id, persona);
+                await personasService.modificar(persona.id, persona).catch(error => {
+                    props.showError();
+                });
             }
             navigate("/persona");
         }

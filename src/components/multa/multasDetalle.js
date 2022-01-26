@@ -11,7 +11,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import multasService from '../../services/multasService';
 import accidentesService from '../../services/accidentesService';
 
-export default function MultasDetalle() {
+export default function MultasDetalle(props) {
 
     const params = useParams();
     const navigate = useNavigate();
@@ -57,7 +57,9 @@ export default function MultasDetalle() {
             if (esNuevo) {
                 await multasService.crear(multa);
             } else {
-                await multasService.modificar(multa.id, multa);
+                await multasService.modificar(multa.id, multa).catch(error => {
+                    props.showError();
+                });
             }
             navigate("/multa");
         }

@@ -45,7 +45,9 @@ export default function VehiculosListado(props) {
     }
 
     async function borrarVehiculo() {
-        await vehiculosService.eliminar(vehiculoActual.id);
+        await vehiculosService.eliminar(vehiculoActual.id).catch(error => {
+            props.showError();
+        });
         ocultarDialogoBorrado();
     }
 

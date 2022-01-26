@@ -4,7 +4,8 @@ import {
   Route,
   NavLink
 } from "react-router-dom";
-
+import React, { useState, useEffect, useRef } from 'react';
+import { Toast } from 'primereact/toast';
 import Home from './components/home';
 
 
@@ -41,9 +42,20 @@ import 'primeflex/primeflex.css';
 //import './App.css';
 
 function App() {
+  const refvalues = {severity: 'error', summary: 'Error', detail: 'Error, comprueba si este valor es referenciado'}
+  const toastRef = useRef();
+
+  const notificationStyle = {
+    zIndex: 9999
+  }
+
+  const showErrorNotification = () => {
+    toastRef.current.show(refvalues);
+  }
+
   return (
     <div>
-
+      <Toast style={notificationStyle} ref={toastRef}></Toast>
       <BrowserRouter>
 
         <nav className="flex">
@@ -69,26 +81,26 @@ function App() {
 
           <Route path="/" element={<Home mensaje="Página principal" />} />
             <Route path="persona" >
-              <Route index element={<PersonasListado />} />
+              <Route index element={<PersonasListado showError={() => showErrorNotification()} />} />
               <Route path="nuevo" element={<PersonasDetalle />} />
               <Route path=":idPersona" element={<PersonasDetalle />} />
             </Route>
 
             <Route path="vehiculo" >
-              <Route index element={<VehiculosListado />} />
+              <Route index element={<VehiculosListado showError={() => showErrorNotification()}/>} />
               <Route path="nuevo" element={<VehiculosDetalle />} />
               <Route path=":idVehiculo" element={<VehiculosDetalle />} />
             </Route>
 
             <Route path="accidente" >
-              <Route index element={<AccidentesListado />} />
+              <Route index element={<AccidentesListado showError={() => showErrorNotification()}/>} />
               <Route path="nuevo" element={<AccidentesDetalle />} />
               <Route path=":idAccidente" element={<AccidentesDetalle />} />
             </Route>
 
             
             <Route path="multa" >
-              <Route index element={<MultasListado />} />
+              <Route index element={<MultasListado showError={() => showErrorNotification()}/>} />
               <Route path="nuevo" element={<MultasDetalle />} />
               <Route path=":idMulta" element={<MultasDetalle />} />
             </Route>

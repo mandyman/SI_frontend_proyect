@@ -9,7 +9,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import accidentesService from '../../services/accidentesService';
 
-export default function AccidentesDetalle() {
+export default function AccidentesDetalle(props) {
 
     const params = useParams();
     const navigate = useNavigate();
@@ -62,7 +62,9 @@ export default function AccidentesDetalle() {
             if (esNuevo) {
                 await accidentesService.crear(accidente);
             } else {
-                await accidentesService.modificar(accidente.id, accidente);
+                await accidentesService.modificar(accidente.id, accidente).catch(error => {
+                    props.showError();
+                });
             }
             navigate("/accidente");
         }

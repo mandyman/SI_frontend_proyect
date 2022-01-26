@@ -27,6 +27,7 @@ export default function PersonasListado(props) {
             setPersonas(res.data);
             setCargando(false);
         });
+
     }, [dialogoBorrado]); // vincula la recarga a cambios en dialogoBorrado (para forzar la recarga despues de un borrado)
 
 
@@ -45,7 +46,9 @@ export default function PersonasListado(props) {
     }
 
     async function borrarPersona() {
-        await personasService.eliminar(personaActual.id);
+        await personasService.eliminar(personaActual.id).catch(error => {
+            props.showError();
+        });
         ocultarDialogoBorrado();
     }
 

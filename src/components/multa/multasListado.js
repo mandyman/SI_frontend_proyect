@@ -45,7 +45,9 @@ export default function MultasListado(props) {
     }
 
     async function borrarMulta() {
-        await multasService.eliminar(multaActual.id);
+        await multasService.eliminar(multaActual.id).catch(error => {
+            props.showError();
+        });
         ocultarDialogoBorrado();
     }
 
