@@ -32,6 +32,14 @@ class personasService {
   buscarPorDNI(dni) {
     return clienteREST.get(`/persona?dni=${dni}`);
   }
+
+  buscarPorProvincia(provincia) {
+    return clienteREST.get(`/persona?provincia=${provincia}`);
+  }
+
+  buscarPorCodigoPostal(codigoPostal) {
+    return clienteREST.get(`/persona?codigoPostal=${codigoPostal}`);
+  }
 }
 
 export default new personasService();

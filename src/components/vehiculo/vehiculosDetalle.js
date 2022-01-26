@@ -40,7 +40,7 @@ export default function VehiculosDetalle() {
         setVehiculo(_vehiculo);
     }
 
-    function onVehiculoChange(e) {
+    function onConductorChange(e) {
         let _vehiculo = { ...vehiculo };
         _vehiculo.conductor = e.value;
         setVehiculo(_vehiculo);
@@ -89,8 +89,8 @@ export default function VehiculosDetalle() {
                         
                         <div className="p-field">
                             <label htmlFor="conductor">Conductor</label>
-                            <Dropdown value={vehiculo.conductor} options={personas} onChange={onVehiculoChange} optionLabel="nombre"
-                                filter showClear filterBy="nombre" placeholder="Seleccionar conductor" />
+                            <Dropdown value={vehiculo.conductor} options={personas} onChange={onConductorChange} optionLabel="nombre"
+                                filter showClear filterBy="nombre" placeholder={esNuevo ? "Seleccionar conductor" : vehiculo.conductor.nombre} />
                         </div>
 
                     </div>

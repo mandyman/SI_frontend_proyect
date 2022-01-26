@@ -15,7 +15,14 @@ export default function PersonasDetalle() {
     const navigate = useNavigate();
     const esNuevo = !('idPersona' in params);
 
-    const personaVacio = {id:"", dni: "", nombre: "", apellidos: "" };
+    const personaVacio = {id:"", dni: "", nombre: "", apellidos: "", 
+        direccion: { 
+            domicilio: "",
+            localidad: "",
+            codigoPostal: "",
+            provincia: ""
+        } 
+    };
     const [persona, setPersona] = useState(personaVacio);
     const [submitted, setSubmitted] = useState(false);
 
@@ -30,9 +37,17 @@ export default function PersonasDetalle() {
     function onInputChange(e, name) {
         const val = (e.target && e.target.value) || '';
         let _persona = { ...persona };
-
-        _persona[`${name}`] = val;
         
+        
+        if (name.includes('.')) {
+            let splited = name.split('.');
+
+            _persona[`${splited[0]}`][`${splited[1]}`] = val;
+        }
+        else {
+            _persona[`${name}`] = val;
+        }
+
         setPersona(_persona);
     }
 
@@ -81,6 +96,30 @@ export default function PersonasDetalle() {
                             <label htmlFor="nombre">Apellidos</label>
                             <InputText id="nombre" value={persona.apellidos} onChange={(e) => onInputChange(e, 'apellidos')} required className={classNames({ 'p-invalid': submitted && !persona.apellidos })} />
                             {submitted && !persona.apellidos && <small className="p-error">Debe indicarse apellidos.</small>}
+                        </div>
+
+                        <div className="p-field">
+                            <label htmlFor="direccion.domicilio">Domicilio</label>
+                            <InputText id="direccion.domicilio" value={persona.direccion.domicilio} onChange={(e) => onInputChange(e, 'direccion.domicilio')} required className={classNames({ 'p-invalid': submitted && !persona.direccion.domicilio })} />
+                            {submitted && !persona.direccion.domicilio && <small className="p-error">Debe indicarse domicilio.</small>}
+                        </div>
+
+                        <div className="p-field">
+                            <label htmlFor="direccion.localidad">Localidad</label>
+                            <InputText id="direccion.localidad" value={persona.direccion.localidad} onChange={(e) => onInputChange(e, 'direccion.localidad')} required className={classNames({ 'p-invalid': submitted && !persona.direccion.localidad })} />
+                            {submitted && !persona.direccion.localidad && <small className="p-error">Debe indicarse localidad.</small>}
+                        </div>
+
+                        <div className="p-field">
+                            <label htmlFor="direccion.codigoPostal">Código Postal</label>
+                            <InputText id="direccion.codigoPostal" value={persona.direccion.codigoPostal} onChange={(e) => onInputChange(e, 'direccion.codigoPostal')} required className={classNames({ 'p-invalid': submitted && !persona.direccion.codigoPostal })} />
+                            {submitted && !persona.direccion.codigoPostal && <small className="p-error">Debe indicarse Código Postal.</small>}
+                        </div>
+
+                        <div className="p-field">
+                            <label htmlFor="direccion.provincia">Provincia</label>
+                            <InputText id="direccion.provincia" value={persona.direccion.provincia} onChange={(e) => onInputChange(e, 'direccion.provincia')} required className={classNames({ 'p-invalid': submitted && !persona.direccion.provincia })} />
+                            {submitted && !persona.direccion.provincia && <small className="p-error">Debe indicarse Provincia.</small>}
                         </div>
 
                     </div>

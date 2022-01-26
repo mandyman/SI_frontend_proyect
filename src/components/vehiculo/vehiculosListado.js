@@ -134,6 +134,7 @@ export default function VehiculosListado(props) {
                     <Column field="modelo" header="Modelo" sortable/>
                     <Column field="matricula" header="matrícula" sortable />
                     <Column field="conductor.id" header="Conductor Id" sortable />
+                    <Column field="conductor.nombre" header="Nombre Conductor" sortable />
                     <Column body={accionesVehiculo} />
                 </DataTable>
             </div>

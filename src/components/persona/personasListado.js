@@ -78,6 +78,23 @@ export default function PersonasListado(props) {
         });
     }
 
+    function buscarPorProvincia() {
+        setCargando(true);
+        personasService.buscarPorProvincia(textoBusqueda).then(res => {
+            setPersonas(res.data);
+            setCargando(false);
+        });
+    }
+
+    function buscarPorCodigoPostal() {
+        setCargando(true);
+        personasService.buscarPorCodigoPostal(textoBusqueda).then(res => {
+            setPersonas(res.data);
+            setCargando(false);
+        });
+    }
+    
+
     function buscarTodos() {
         setCargando(true);
         personasService.buscarTodos().then(res => {
@@ -117,6 +134,8 @@ export default function PersonasListado(props) {
                 <Button label="Buscar por dni" className="col-1 mr-2" onClick={buscarPorDNI} />
                 <Button label="Buscar por nombre" className="col-1 mr-2" onClick={buscarPorNombre} />
                 <Button label="Buscar por apellidos" className="col-1 mr-2" onClick={buscarPorApellidos} />
+                <Button label="Buscar por provincia" className="col-1 mr-2" onClick={buscarPorProvincia} />
+                <Button label="Buscar por codigoPostal" className="col-1 mr-2" onClick={buscarPorCodigoPostal} />
                 <Button label="Buscar todos" className="col-1 mr-2" onClick={buscarTodos} />
             </div>
 
@@ -134,6 +153,8 @@ export default function PersonasListado(props) {
                     <Column field="dni" header="DNI" />
                     <Column field="nombre" header="Nombre" sortable />
                     <Column field="apellidos" header="Apellidos" sortable />
+                    <Column field="direccion.provincia" header="Provincia" sortable />
+                    <Column field="direccion.codigoPostal" header="Código Postal" sortable />
                     <Column body={accionesPersona} />
                 </DataTable>
             </div>

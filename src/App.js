@@ -14,6 +14,12 @@ import PersonasDetalle from "./components/persona/personasDetalle";
 import VehiculosListado from "./components/vehiculo/vehiculosListado"
 import VehiculosDetalle from "./components/vehiculo/vehiculosDetalle"
 
+import AccidentesListado from "./components/accidente/accidentesListado"
+import AccidentesDetalle from "./components/accidente/accidentesDetalle"
+
+import MultasListado from "./components/multa/multasListado"
+import MultasDetalle from "./components/multa/multasDetalle"
+
 import ClientesListado from "./components/clientes/clientesListado";
 import ClientesDetalle from "./components/clientes/clientesDetalle";
 
@@ -53,6 +59,8 @@ function App() {
         <NavLink to="/" className="px-5 py-3 no-underline text-900 text-xl border-bottom-2 border-300 hover:border-500">Home</NavLink>
         <NavLink to="/persona" className="px-5 py-3 no-underline text-700 text-xl border-bottom-2 border-300 hover:border-500">Personas</NavLink>
         <NavLink to="/vehiculo" className="px-5 py-3 no-underline text-700 text-xl border-bottom-2 border-300 hover:border-500">Vehículos</NavLink>
+        <NavLink to="/accidente" className="px-5 py-3 no-underline text-700 text-xl border-bottom-2 border-300 hover:border-500">Accidentes</NavLink>
+        <NavLink to="/multa" className="px-5 py-3 no-underline text-700 text-xl border-bottom-2 border-300 hover:border-500">Multas</NavLink>
         </nav>
 
         <div className="p-5">
@@ -70,6 +78,19 @@ function App() {
               <Route index element={<VehiculosListado />} />
               <Route path="nuevo" element={<VehiculosDetalle />} />
               <Route path=":idVehiculo" element={<VehiculosDetalle />} />
+            </Route>
+
+            <Route path="accidente" >
+              <Route index element={<AccidentesListado />} />
+              <Route path="nuevo" element={<AccidentesDetalle />} />
+              <Route path=":idAccidente" element={<AccidentesDetalle />} />
+            </Route>
+
+            
+            <Route path="multa" >
+              <Route index element={<MultasListado />} />
+              <Route path="nuevo" element={<MultasDetalle />} />
+              <Route path=":idMulta" element={<MultasDetalle />} />
             </Route>
 
           {/*
