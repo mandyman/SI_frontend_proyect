@@ -42,7 +42,7 @@ import 'primeflex/primeflex.css';
 import './App.css';
 
 function App() {
-  const refvalues = {severity: 'error', summary: 'Error', detail: 'Error, comprueba si este valor es referenciado'}
+  const refvalues = {severity: 'error', summary: 'Error', detail: 'Error, comprueba si este valor es referenciado antes de borrarlo o modificarlo'}
   const toastRef = useRef();
 
   const notificationStyle = {
@@ -55,7 +55,7 @@ function App() {
 
   return (
     <div>
-      <Toast style={notificationStyle} ref={toastRef}></Toast>
+      <Toast style={notificationStyle} ref={toastRef} position="top-center"></Toast>
       <BrowserRouter>
 
         <nav className="flex">

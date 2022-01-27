@@ -95,8 +95,8 @@ export default function VehiculosListado(props) {
     function accionesVehiculo(rowData) {
         return (
             <React.Fragment>
-                <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editarVehiculo(rowData)} tooltip="Ver/editar el vehiculo" />
-                <Button icon="pi pi-trash" className="p-button-rounded p-button-danger" onClick={() => confirmarBorradoVehiculo(rowData)} tooltip="Eliminar el vehiculo" />
+                <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editarVehiculo(rowData)} tooltip="Ver/editar el vehículo" />
+                <Button icon="pi pi-trash" className="p-button-rounded p-button-danger" onClick={() => confirmarBorradoVehiculo(rowData)} tooltip="Eliminar el vehículo" />
             </React.Fragment>
         );
     }
@@ -111,7 +111,7 @@ export default function VehiculosListado(props) {
 
     return (
         <div>
-            <div className="text-3xl text-800 font-bold mb-4">Listado de vehiculos</div>
+            <div className="text-3xl text-800 font-bold mb-4">Listado de vehículos</div>
 
             <div className="grid">
                 <InputText id="busqueda" className="col-5 mr-2" onChange={onBusquedaChange} />
@@ -123,14 +123,14 @@ export default function VehiculosListado(props) {
 
 
             <div className="flex justify-content-end">
-                <Button label="Nueva vehiculo" icon="pi pi-plus" className="p-button-lg" onClick={nuevoVehiculo} tooltip="Crear un nuevo vehiculo" tooltipOptions={{ position: 'bottom' }} />
+                <Button label="Nuevo vehículo" icon="pi pi-plus" className="p-button-lg" onClick={nuevoVehiculo} tooltip="Crear un nuevo vehículo" tooltipOptions={{ position: 'bottom' }} />
             </div>
 
 
             {cargando && <div> <ProgressSpinner /> Cargando... </div>}
 
             <div className="surface-card p-4 border-round shadow-2">
-                <DataTable value={vehiculos} responsiveLayout="scroll" stripedRows emptyMessage="No hay vehiculos que mostrar">
+                <DataTable value={vehiculos} responsiveLayout="scroll" stripedRows emptyMessage="No hay vehículos que mostrar">
                     <Column field="id" header="Id" />
                     <Column field="modelo" header="Modelo" sortable/>
                     <Column field="matricula" header="matrícula" sortable />
@@ -144,7 +144,7 @@ export default function VehiculosListado(props) {
                 footer={pieDialogoBorrado} onHide={ocultarDialogoBorrado}>
                 <div className="flex align-items-center justify-content-center">
                     <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />
-                    {vehiculoActual && <span>Confirmar el borrado de vehiculo <b>{vehiculoActual.matricula}</b>?</span>}
+                    {vehiculoActual && <span>Confirmar el borrado de vehículo <b>{vehiculoActual.matricula}</b>?</span>}
                 </div>
             </Dialog>
 
