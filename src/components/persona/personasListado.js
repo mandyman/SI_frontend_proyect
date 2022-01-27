@@ -153,8 +153,10 @@ export default function PersonasListado(props) {
                     <Column field="dni" header="DNI" />
                     <Column field="nombre" header="Nombre" sortable />
                     <Column field="apellidos" header="Apellidos" sortable />
-                    <Column field="direccion.provincia" header="Provincia" sortable />
+                    <Column field="direccion.domicilio" header="Domicilio" sortable />
+                    <Column field="direccion.localidad" header="Localidad" sortable />
                     <Column field="direccion.codigoPostal" header="Código Postal" sortable />
+                    <Column field="direccion.provincia" header="Provincia" sortable />
                     <Column body={accionesPersona} />
                 </DataTable>
             </div>

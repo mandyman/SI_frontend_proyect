@@ -134,8 +134,10 @@ export default function AccidentesListado(props) {
                 <DataTable value={accidentes} responsiveLayout="scroll" stripedRows emptyMessage="No hay accidentes que mostrar">
                     <Column field="id" header="Id" />
                     <Column field="descripcion" header="Descripcion" sortable />
-                    <Column field="localizacion.provincia" header="Provincia" sortable />
+                    <Column field="localizacion.domicilio" header="Domicilio" sortable />
+                    <Column field="localizacion.localidad" header="Localidad" sortable />
                     <Column field="localizacion.codigoPostal" header="Código Postal" sortable />
+                    <Column field="localizacion.provincia" header="Provincia" sortable />
                     <Column body={accionesAccidente} />
                 </DataTable>
             </div>
