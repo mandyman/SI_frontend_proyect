@@ -24,7 +24,19 @@ export default function AccidentesListado(props) {
 
     useEffect(() => {
         accidentesService.buscarTodos().then(res => {
-            setAccidentes(res.data);
+            for (let i = 0; i < res.data.length; i++){
+                let multas_string_list = "";
+                for (let j = 0; j < res.data[i].multas.length; j++) {
+                    if ( j === res.data[i].multas.length - 1){
+                        multas_string_list += (res.data[i].multas[j].id).toString()
+                        continue;
+                    }
+                    multas_string_list +=  (res.data[i].multas[j].id) + ", ";             
+                }
+
+                res.data[i] = {...res.data[i], multasListString: multas_string_list}
+            }
+            setAccidentes(res.data); 
             setCargando(false);
         });
     }, [dialogoBorrado]); // vincula la recarga a cambios en dialogoBorrado (para forzar la recarga despues de un borrado)
@@ -138,6 +150,7 @@ export default function AccidentesListado(props) {
                     <Column field="localizacion.localidad" header="Localidad" sortable />
                     <Column field="localizacion.codigoPostal" header="Código Postal" sortable />
                     <Column field="localizacion.provincia" header="Provincia" sortable />
+                    <Column field="multasListString" header="Infracciones Expedidas" sortable /> 
                     <Column body={accionesAccidente} />
                 </DataTable>
             </div>
