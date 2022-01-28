@@ -73,7 +73,7 @@ export default function MultasDetalle(props) {
         <div>
             <div className="surface-card border-round shadow-2 p-4">
                 {!esNuevo && <span className="text-900 text-2xl font-medium mb-4 block">Detalle de multa</span>}
-                {esNuevo && <span className="text-900 text-2xl font-medium mb-4 block">Nuevo multa</span>}
+                {esNuevo && <span className="text-900 text-2xl font-medium mb-4 block">Nueva multa</span>}
 
                 <form onSubmit={handleSubmit} >
                     <div className="p-fluid">
